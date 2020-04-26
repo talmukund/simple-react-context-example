@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import { useTranslation } from 'react-i18next';
+
 import Header from './components/header';
 import Container from './components/container'
 import Chart from './components/charts';
@@ -27,6 +29,9 @@ function App() {
   }
   const value = { data, setData };
   const classes = useStyles();
+
+  const { t } = useTranslation();
+
   return (
     <Conetxt.Provider value={value}>
       <header >
@@ -40,7 +45,7 @@ function App() {
           </Grid>
           <Grid item>
           <Button variant="contained" color="primary" onClick={()=>openEditModal(true)}>
-            edit data
+            {t('edit data')}
             </Button>
           </Grid>
           </Container>
