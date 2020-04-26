@@ -17,7 +17,8 @@ const [formData, setFormData] = React.useState({});
   const classes = useStyles();
   const context = React.useContext(Conetxt);
 
-  const handleSubmit = ()=>{
+  const handleSubmit = event=>{
+    event.preventDefault();
       const data = [...context.data];
       const income = formData.income;
       const expense = formData.expense;
@@ -35,7 +36,7 @@ const [formData, setFormData] = React.useState({});
   }
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
         <div>
         <TextField id="income" label="income source" variant="outlined" onChange={handleChange} name="income"/>
         </div>
@@ -45,7 +46,7 @@ const [formData, setFormData] = React.useState({});
       <div>
       <TextField id="price" label="price source" variant="outlined" onChange={handleChange} type='number' name="price" />
       </div>
-      <Button variant="contained" color="primary" onClick={handleSubmit}>
+      <Button variant="contained" color="primary" type='submit'>
             submit
             </Button>
     </form>
